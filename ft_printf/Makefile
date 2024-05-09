@@ -3,7 +3,8 @@ NAME = libftprintf.a
 SRCS =	ft_printf.c \
 	ft_printfc.c \
 	ft_printfs.c \
-	ft_printfp.c
+	ft_printfp.c \
+	ft_printfd.c \
 
 OBJS = ${SRCS:.c=.o}
 LIBC = ar rcs
