@@ -6,7 +6,7 @@
 /*   By: carlos-j <carlos-j@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:36:30 by carlos-j          #+#    #+#             */
-/*   Updated: 2024/05/09 09:37:52 by carlos-j         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:44:19 by carlos-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,3 +14,40 @@
 // %X Prints a number in hexadecimal (base 16) uppercase format.
 
 #include "ft_printf.h"
+
+int	convert(int digit)
+{
+	char	*hex;
+
+	hex = "0123456789abcdef";
+	return (hex[digit]);
+}
+
+int	ft_printfx(const char *format, unsigned int n)
+{
+	int		count;
+	int		digits[8];
+	int		i;
+	char	c;
+
+	count = 0;
+	if (n == 0)
+		return (ft_printfc('0'));
+	i = 0;
+	while (n != 0)
+	{
+		digits[i++] = n % 16;
+		n = n / 16;
+		count++;
+	}
+	i--;
+	while (i >= 0)
+	{
+		c = convert(digits[i]);
+		if (*format == 'X' && c >= 'a' && c <= 'f')
+			c -= 32;
+		ft_printfc(c);
+		i--;
+	}
+	return (count);
+}

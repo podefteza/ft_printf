@@ -42,13 +42,3 @@ int	ft_printfp(void *pointer)
 	write(1, buffer + i, 16 - i);
 	return (2 + (16 - i));
 }
-/*
-int	main(void)
-{
-	char	*c;
-
-	c = "Hello";
-	ft_printfp(c);
-	printf("\n%p", c);
-	return (0);
-}*/
