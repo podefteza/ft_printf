@@ -6,13 +6,13 @@
 /*   By: carlos-j <carlos-j@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:22:48 by carlos-j          #+#    #+#             */
-/*   Updated: 2024/05/10 13:21:51 by carlos-j         ###   ########.fr       */
+/*   Updated: 2024/05/12 14:32:17 by carlos-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_format(va_list args, const char format)
+int	format_printf(va_list args, const char format)
 {
 	if (format == 'c')
 		return (ft_printfc(va_arg(args, int)));
@@ -21,7 +21,7 @@ int	ft_format(va_list args, const char format)
 	else if (format == 'p')
 		return (ft_printfp(va_arg(args, void *)));
 	else if (format == 'd' || format == 'i')
-		return (ft_printfdi(va_arg(args, int)));
+		return (ft_printfnumber(va_arg(args, int)));
 	else if (format == 'u')
 		return (ft_printfu(va_arg(args, unsigned int)));
 	else if (format == 'x' || format == 'X')
@@ -31,7 +31,7 @@ int	ft_format(va_list args, const char format)
 	return (0);
 }
 
-int	ft_is_conversion_specifier(char c)
+int	is_conversion_specifier(char c)
 {
 	char	*conversion;
 
@@ -43,6 +43,25 @@ int	ft_is_conversion_specifier(char c)
 		conversion++;
 	}
 	return (0);
+}
+
+int	handle_percent(va_list args, const char *str, size_t *i)
+{
+	int	length;
+
+	if (str[*i] && is_conversion_specifier(str[*i]))
+	{
+		length = format_printf(args, str[*i]);
+		(*i)++;
+		return (length);
+	}
+	else
+	{
+		ft_printfc('%');
+		ft_printfc(str[*i]);
+		(*i)++;
+		return (2);
+	}
 }
 
 int	ft_printf(const char *str, ...)
@@ -61,16 +80,8 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			while (str[i] && !ft_is_conversion_specifier(str[i]))
-			{
-				ft_printfc(str[i]);
-				i++;
-			}
 			if (str[i])
-			{
-				length += ft_format(args, str[i]);
-				i++;
-			}
+				length += handle_percent(args, str, &i);
 		}
 		else
 		{
@@ -83,18 +94,28 @@ int	ft_printf(const char *str, ...)
 	return (length);
 }
 
-// cspdiuxX%
+/*
+> Iterates through the each character;
+> Checks if character is % or not;
+
+*/
 /*
 int	main(void)
 {
-	char	c = 'x';
-	char	p = 'y';
-	char	s[] = "42 Porto";
-	int	n = 010;
-	unsigned int un = 42;
+	char			c;
+	char			p;
+	char			s[] = "42 Porto";
+	int				n;
+	unsigned int	un;
 
-	ft_printf("%c %s %s %p %d %i %u %% Hexadecimal: %x %X\n", c, s, "Portugal",
-		&p, n, n, un, un, un, un);
-	printf("%c %s %s %p %d %i %u %% Hexadecimal: %x %X\n", c, s, "Portugal", &p,
+	c = 'x';
+	p = 'y';
+	n = 010;
+	un = 42;
+	ft_printf("%c %s %s %p %d %i %u%% ", c, s, "Portugal", &p, n, n, un);
+	ft_printf("Hexadecimal: %x %X | %k --> not a specifier\n", un, un, un, p);
+	printf("%c %s %s %p %d %i %u%% Hexadecimal: %x %X\n", c, s, "Portugal", &p,
 		n, n, un, un, un);
-}*/
+}
+
+*/
