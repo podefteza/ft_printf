@@ -6,7 +6,7 @@
 /*   By: carlos-j <carlos-j@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:36:16 by carlos-j          #+#    #+#             */
-/*   Updated: 2024/05/10 12:57:52 by carlos-j         ###   ########.fr       */
+/*   Updated: 2024/05/14 11:25:11 by carlos-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,17 @@
 int	ft_printfu(unsigned int number)
 {
 	int				count;
-	unsigned int	n;
 	int				digits[20];
 	int				i;
 
 	count = 0;
-	n = number;
-	if (n == 0)
+	if (number == 0)
 		return (ft_printfc('0'));
 	i = 0;
-	while (n != 0)
+	while (number != 0)
 	{
-		digits[i++] = n % 10;
-		n = n / 10;
+		digits[i++] = number % 10;
+		number = number / 10;
 		count++;
 	}
 	i--;
@@ -40,3 +38,7 @@ int	ft_printfu(unsigned int number)
 	}
 	return (count);
 }
+/*
+> This is pretty much similar to the ft_printfnumber function, however
+it doesn't need to handle negative numbers, so the array can now have 20 indexes;
+*/

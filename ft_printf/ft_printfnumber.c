@@ -6,7 +6,7 @@
 /*   By: carlos-j <carlos-j@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:34:54 by carlos-j          #+#    #+#             */
-/*   Updated: 2024/05/12 11:24:22 by carlos-j         ###   ########.fr       */
+/*   Updated: 2024/05/14 11:24:31 by carlos-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,3 +49,17 @@ int	ft_printfnumber(int number)
 		ft_printfc(digits[i--] + '0');
 	return (count);
 }
+
+/*
+> We have conditions for both the MIN_VALUE of int and value 0;
+
+> If the number is negative, we write the character - and convert
+the number to positive;
+
+> We than use the itoa method;
+	> Storing each of the characters in digits;
+		> Using the % 10 and / 10;
+
+> We write the number using the function to print char the values
+of digits backwards by adding '+0' to it;
+*/

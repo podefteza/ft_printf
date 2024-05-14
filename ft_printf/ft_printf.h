@@ -6,7 +6,7 @@
 /*   By: carlos-j <carlos-j@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:07:54 by carlos-j          #+#    #+#             */
-/*   Updated: 2024/05/12 11:24:20 by carlos-j         ###   ########.fr       */
+/*   Updated: 2024/05/14 12:17:30 by carlos-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-int	ft_format(va_list args, const char format);
 int	ft_printf(const char *str, ...);
 int	ft_printfc(int c);
 int	ft_printfs(char *s);
