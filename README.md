@@ -1,4 +1,4 @@
-# ft_printf - Because ft_putnbr() and ft_putstr() Aren’t Enough
+# ft_printf - Because ft_putnbr() and ft_putstr() Aren’t Enough 📚
 
 In this project, I tackled the challenge of recoding the `printf()` function. The main goal was to understand and implement variadic functions in C, which allow for a variable number of arguments.
 
