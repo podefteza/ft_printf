@@ -6,7 +6,7 @@
 /*   By: carlos-j <carlos-j@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:22:48 by carlos-j          #+#    #+#             */
-/*   Updated: 2024/05/14 14:13:20 by carlos-j         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:19:52 by carlos-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,29 +86,11 @@ int	ft_printf(const char *str, ...)
 
 > Checks if character is % or not;
 	> If it's a %, it checks if the next character is one of cspdiuxX%
-		> If so, it calls the function to print the value associated to that type
+		> If so,
+			it calls the function to print the value associated to that type
 	> If not, it prints the % and the following character (ex. %y)
 
 > In case that the character is not a %, it just writes that character
 
 > For each character it itinerates, keeps adding the length to return it
 */
-/* ================ MAIN TO TEST... ================*/
-int	main(void)
-{
-	char			c;
-	char			p;
-	char			s[] = "42 Porto";
-	int				n;
-	unsigned int	un;
-
-	c = 'x';
-	p = 'y';
-	n = 010;
-	un = 42;
-	ft_printf("%c %s %s %p %d %i %u%% ", c, s, "Portugal", &p, n, n, un);
-	ft_printf("Hexadecimal: %x %X | %k --> not a specifier\n", un, un, un, p);
-	printf("\n%c %s %s %p %d %i %u%% Hexadecimal: %x %X | %w --> not a specifier\n", c, s, "Portugal", &p,
-		n, n, un, un, un, p);
-}
-
